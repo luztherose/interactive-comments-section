@@ -1,12 +1,11 @@
 // import logo from './logo.svg';
-import '../App.css';
 import Footer from './Footer'
 
 const App = () =>  {
   return (
-    <div className="app">
-      <header className="app-header">
-        <h1>Working...</h1>
+    <div>
+      <header>
+        <h1 className="text-4xl text-center">Working...</h1>
       </header>
       <Footer />
     </div>
