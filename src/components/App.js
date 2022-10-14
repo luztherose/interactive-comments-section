@@ -1,5 +1,6 @@
 import Footer from './Footer';
-import AddComment from './AddComment'
+import AddComment from './AddComment';
+import PostedComment from './PostedComment'
 
 
 const App = () =>  {
@@ -10,6 +11,7 @@ const App = () =>  {
       </header>
       <main>
         <AddComment />
+        <PostedComment />
       </main>
       <Footer />
     </div>
