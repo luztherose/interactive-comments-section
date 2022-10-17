@@ -1,6 +1,6 @@
-import Footer from './Footer';
-import AddComment from './AddComment';
-import PostedComment from './PostedComment'
+import Footer from './components/footer.jsx';
+import AddComment from './components/addComment.jsx';
+import PostedComment from './components/postedComment.jsx'
 
 
 const App = () =>  {
