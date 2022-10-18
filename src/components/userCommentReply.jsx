@@ -4,6 +4,7 @@ import iconPlus from "../images/icon-plus.svg";
 import iconMinus from "../images/icon-minus.svg";
 import iconDelete from "../images/icon-delete.svg";
 import iconEdit from "../images/icon-edit.svg";
+import EditDeleteComment from "./editDeleteComment";
 
 const UserCommentReply = () => {
   return (
@@ -34,28 +35,7 @@ const UserCommentReply = () => {
                 <p className="text-gray-600 text-sm">1 month ago</p>
               </div>
             </div>
-            <div className="w-2/5">
-              <button className="w-3/5 text-sm text-softRed font-semibold md:self-end md:-mt-6">
-                <span className="inline-block mr-1">
-                  <img
-                    className=""
-                    src={iconDelete}
-                    alt="user profile's avatar"
-                  />
-                </span>
-                Delete
-              </button>
-              <button className="w-2/5 text-sm text-moderateBlue font-semibold md:self-end md:-mt-6">
-                <span className="inline-block mr-1">
-                  <img
-                    className=""
-                    src={iconEdit}
-                    alt="user profile's avatar"
-                  />
-                </span>
-                Edit
-              </button>
-            </div>
+            <EditDeleteComment />
           </div>
           <div className="grow  w-full ml-3 mr-3 text-center md:order-first md:mx-auto sm:w-full md:w-5/5">
             <textarea
