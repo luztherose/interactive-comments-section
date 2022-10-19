@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import userAvatar from "../images/avatars/image-amyrobson.png";
-import iconPlus from "../images/icon-plus.svg";
-import iconMinus from "../images/icon-minus.svg";
 import iconReply from "../images/icon-reply.svg";
+import Counter from "./counter";
 import EditDeleteComment from "./editDeleteComment";
 import AddReplyComment from "./addReplyComment";
 
@@ -17,10 +16,23 @@ const getReplyButtonClasses = (isReplyActive) => {
 const PostedComment = (user) => {
   const [isReplyActive, setIsReplyActive] = useState(false);
   const [showReplyComponent, setShowReplyComponent] = useState(false);
+  let [value, setValue] = useState(0);
 
   const handleReply = () => {
     setShowReplyComponent(true);
     setIsReplyActive(true);
+  };
+
+  const handleIncrement = () => {
+    setValue(value++);
+  };
+
+  const handleDecrement = () => {
+    if (value != 0) {
+      setValue(value--);
+    }else {
+        setValue(0);
+    } 
   };
 
   const displayButtonBasedOnUser = (user) => {
@@ -44,15 +56,11 @@ const PostedComment = (user) => {
   return (
     <section className="mt-8">
       <div className="px-5 py-8 max-w-xl mx-auto bg-white flex flex-wrap gap-1 items-start rounded-lg md:flex-col sm:p-4">
-        <div className="flex-col bg-lightGray self-center px-3 py-2 rounded-lg md:self-center md:flex md:flex-row md:justify-around md:w-1/5 md:px-2 md:py-1 md:mt-2 md:ml-6 sm:w-2/5 sm:ml-1">
-          <button>
-            <img className="" src={iconPlus} alt="user profile's avatar" />
-          </button>
-          <p className="mt-2 md:mt-0 text-moderateBlue">0</p>
-          <button>
-            <img className="" src={iconMinus} alt="user profile's avatar" />
-          </button>
-        </div>
+        <Counter
+          value={value}
+          onIncrement={handleIncrement}
+          onDecrement={handleDecrement}
+        />
         <div className="w-11/12 md:-order-1">
           <div className="flex w-full">
             <div className="grow  w-3/5 ml-3 mr-3 text-center md:order-first">
