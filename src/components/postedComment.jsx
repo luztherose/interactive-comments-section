@@ -1,24 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import userAvatar from "../images/avatars/image-amyrobson.png";
 import iconPlus from "../images/icon-plus.svg";
 import iconMinus from "../images/icon-minus.svg";
 import iconReply from "../images/icon-reply.svg";
 import EditDeleteComment from "./editDeleteComment";
+import AddComment from "./addComment";
 
-const displayButtonBasedOnUser = (user) => {
-  if (user === "you") {
-    return <EditDeleteComment />;
+const getReplyButtonClasses = (isReplyActive) => {
+  let classes = "w-2/5 text-sm font-semibold self-start md:-mt-6";
+  if (!isReplyActive) {
+    return (classes += " text-moderateBlue");
   }
-  return (
-    <button className="w-2/5 text-sm text-moderateBlue font-semibold self-start md:-mt-6">
-      <span className="inline-block mr-1">
-        <img className="" src={iconReply} alt="user profile's avatar" />
-      </span>
-      Reply
-    </button>
-  );
+  return (classes += " text-lightGrayishBlue");
 };
-const PostedComment = () => {
+
+const PostedComment = (user) => {
+  const [isReply, setIsReply] = useState(false);
+  const [isReplyActive, setIsReplyActive] = useState(false);
+  const [showReplyComponent, setShowReplyComponent] = useState(false);
+
+  const handleReply = () => {
+    setShowReplyComponent(true);
+    setIsReply(true);
+    setIsReplyActive(true);
+  };
+
+  const displayButtonBasedOnUser = (user) => {
+    if (user === "you") {
+      return <EditDeleteComment />;
+    }
+    return (
+      <button
+        className={getReplyButtonClasses(isReplyActive)}
+        disabled={isReplyActive}
+        onClick={handleReply}
+      >
+        <span className="inline-block mr-1">
+          <img className="" src={iconReply} alt="user profile's avatar" />
+        </span>
+        Reply
+      </button>
+    );
+  };
+
   return (
     <section className="mt-8 p-20 bg-gray-100">
       <div className="px-5 py-8 max-w-xl mx-auto bg-white flex flex-wrap gap-1 items-start rounded-lg md:flex-col sm:p-4">
@@ -41,13 +65,15 @@ const PostedComment = () => {
                   alt="user profile's avatar"
                 />
                 <p className="font-semibold text-sm">amyrobson</p>
-                <p className="text-sm text-white bg-moderateBlue px-2 m-0 h-fit">
-                  You
-                </p>
+                {user === "you" && (
+                  <p className="text-sm text-white bg-moderateBlue px-2 m-0 h-fit">
+                    You
+                  </p>
+                )}
                 <p className="text-gray-600 text-sm">1 month ago</p>
               </div>
             </div>
-            {displayButtonBasedOnUser("you")}
+            {displayButtonBasedOnUser("")}
           </div>
           <div className="grow  w-full ml-3 mr-3 text-center md:order-first md:mx-auto sm:w-full md:w-5/5">
             <p className="text-sm text-gray-600 text-start w-11/12 ml-6 sm:ml-0">
@@ -58,6 +84,7 @@ const PostedComment = () => {
           </div>
         </div>
       </div>
+      <AddComment isReply={isReply} show={showReplyComponent} />
     </section>
   );
 };
