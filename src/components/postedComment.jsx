@@ -4,7 +4,7 @@ import iconPlus from "../images/icon-plus.svg";
 import iconMinus from "../images/icon-minus.svg";
 import iconReply from "../images/icon-reply.svg";
 import EditDeleteComment from "./editDeleteComment";
-import AddComment from "./addComment";
+import AddReplyComment from "./addReplyComment";
 
 const getReplyButtonClasses = (isReplyActive) => {
   let classes = "w-2/5 text-sm font-semibold self-start md:-mt-6";
@@ -15,13 +15,11 @@ const getReplyButtonClasses = (isReplyActive) => {
 };
 
 const PostedComment = (user) => {
-  const [isReply, setIsReply] = useState(false);
   const [isReplyActive, setIsReplyActive] = useState(false);
   const [showReplyComponent, setShowReplyComponent] = useState(false);
 
   const handleReply = () => {
     setShowReplyComponent(true);
-    setIsReply(true);
     setIsReplyActive(true);
   };
 
@@ -44,7 +42,7 @@ const PostedComment = (user) => {
   };
 
   return (
-    <section className="mt-8 p-20 bg-gray-100">
+    <section className="mt-8">
       <div className="px-5 py-8 max-w-xl mx-auto bg-white flex flex-wrap gap-1 items-start rounded-lg md:flex-col sm:p-4">
         <div className="flex-col bg-lightGray self-center px-3 py-2 rounded-lg md:self-center md:flex md:flex-row md:justify-around md:w-1/5 md:px-2 md:py-1 md:mt-2 md:ml-6 sm:w-2/5 sm:ml-1">
           <button>
@@ -84,7 +82,7 @@ const PostedComment = (user) => {
           </div>
         </div>
       </div>
-      <AddComment isReply={isReply} show={showReplyComponent} />
+      <AddReplyComment show={showReplyComponent} />
     </section>
   );
 };

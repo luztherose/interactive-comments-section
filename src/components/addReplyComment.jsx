@@ -1,10 +1,18 @@
 import React from "react";
 import userAvatar from "../images/avatars/image-amyrobson.png";
 
-const AddComment = () => {
+const getAddReplyCommentClasses = (show) => {
+  let classes = "mt-8 bg-gray-100";
+  if (!show) {
+    return (classes += " hidden");
+  }
+  return (classes += " block");
+};
+
+const AddReplyComment = ({show}) => {
   return (
-    <section className="mt-8">
-      <div className="p-5 max-w-xl mx-auto bg-white flex items-start rounded-lg md:flex-col md:max-w-md sm:max-w-xl">
+    <section className={getAddReplyCommentClasses(show)}>
+      <div className="p-5 max-w-lg mx-auto bg-white flex items-start rounded-lg md:flex-col md:max-w-md sm:max-w-xl">
         <img
           className="grow-0 block mx-auto h-8 rounded-full sm:mx-0 sm:shrink-0 md:ml-14 md:mt-3"
           src={userAvatar}
@@ -17,11 +25,11 @@ const AddComment = () => {
           ></textarea>
         </div>
         <button className="grow-0 px-6 py-2 text-sm text-white font-semibold rounded-lg border bg-moderateBlue md:self-end md:-mt-9 md:mr-12 sm:mr-0">
-          SEND
+            Reply
         </button>
       </div>
     </section>
   );
 };
 
-export default AddComment;
+export default AddReplyComment;
