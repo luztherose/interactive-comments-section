@@ -13,10 +13,16 @@ const getReplyButtonClasses = (isReplyActive) => {
   return (classes += " text-lightGrayishBlue");
 };
 
-const PostedComment = (user) => {
+const Comment = ({ user, comment }) => {
   const [isReplyActive, setIsReplyActive] = useState(false);
   const [showReplyComponent, setShowReplyComponent] = useState(false);
-  let [value, setValue] = useState(0);
+  let [value, setValue] = useState(comment.score);
+  const { content, createdAt } = comment;
+  const { username, image } = comment.user;
+
+  const getImageURL = (url) => {
+    return url.slice(1);
+  };
 
   const handleReply = () => {
     setShowReplyComponent(true);
@@ -30,9 +36,7 @@ const PostedComment = (user) => {
   const handleDecrement = () => {
     if (value != 0) {
       setValue(value--);
-    }else {
-        setValue(0);
-    } 
+    }
   };
 
   const displayButtonBasedOnUser = (user) => {
@@ -67,25 +71,23 @@ const PostedComment = (user) => {
               <div className="flex justify-start gap-3 mb-5">
                 <img
                   className="grow-0 h-8 rounded-full sm:ml-0"
-                  src={userAvatar}
+                  src={getImageURL(image.png)}
                   alt="user profile's avatar"
                 />
-                <p className="font-semibold text-sm">amyrobson</p>
+                <p className="font-semibold text-sm">{username}</p>
                 {user === "you" && (
                   <p className="text-sm text-white bg-moderateBlue px-2 m-0 h-fit">
                     You
                   </p>
                 )}
-                <p className="text-gray-600 text-sm">1 month ago</p>
+                <p className="text-gray-600 text-sm">{createdAt}</p>
               </div>
             </div>
             {displayButtonBasedOnUser("")}
           </div>
           <div className="grow  w-full ml-3 mr-3 text-center md:order-first md:mx-auto sm:w-full md:w-5/5">
             <p className="text-sm text-gray-600 text-start w-11/12 ml-6 sm:ml-0">
-              Impressive! Though, it seems like the drag feature could be
-              improve. But overall it looks incredible. You've nailed the design
-              and the responsiveness at various breakpoints works really well.
+              {content}
             </p>
           </div>
         </div>
@@ -95,4 +97,4 @@ const PostedComment = (user) => {
   );
 };
 
-export default PostedComment;
+export default Comment;
