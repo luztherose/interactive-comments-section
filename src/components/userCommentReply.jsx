@@ -2,8 +2,6 @@ import React from "react";
 import userAvatar from "../images/avatars/image-amyrobson.png";
 import iconPlus from "../images/icon-plus.svg";
 import iconMinus from "../images/icon-minus.svg";
-import iconDelete from "../images/icon-delete.svg";
-import iconEdit from "../images/icon-edit.svg";
 import EditDeleteComment from "./editDeleteComment";
 
 const UserCommentReply = () => {
