@@ -1,17 +1,21 @@
+import { useState } from 'react';
 import Footer from './components/footer.jsx';
 import AddComment from './components/addComment.jsx';
-import PostedComment from './components/postedComment.jsx';
+import Comment from './components/comment.jsx';
 import UserCommentReply from './components/userCommentReply'
+import data from "./data/data.json"
+
 
 
 const App = () =>  {
+  const [comments, setComments] =useState(data.comments);
+  console.log(comments)
   return (
     <div>
-      <header>
-        {/* <h1 className="text-4xl text-center">Working...</h1> */}
-      </header>
       <main className="bg-gray-100 p-12">
-        <PostedComment />
+        {comments.map((comment, index) => {
+          return <Comment user="" comment={comment} key={index}/>
+        })} 
         <UserCommentReply />
         <AddComment />
       </main>
