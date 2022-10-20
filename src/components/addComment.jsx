@@ -3,7 +3,7 @@ import userAvatar from "../images/avatars/image-amyrobson.png";
 
 const AddComment = () => {
   return (
-    <section className="mt-8">
+    <section className="mt-4">
       <div className="p-5 max-w-xl mx-auto bg-white flex items-start rounded-lg md:flex-col md:max-w-md sm:max-w-xl">
         <img
           className="grow-0 block mx-auto h-8 rounded-full sm:mx-0 sm:shrink-0 md:ml-14 md:mt-3"

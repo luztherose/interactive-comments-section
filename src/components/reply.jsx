@@ -2,7 +2,7 @@ import React, { useState, Fragment } from "react";
 import iconReply from "../images/icon-reply.svg";
 import Counter from "./counter";
 import EditDeleteComment from "./editDeleteComment";
-import AddReplyComment from "./addReplyComment";
+import AddReply from "./addReply";
 
 const getReplyButtonClasses = (isReplyActive) => {
   let classes = "w-2/5 text-sm font-semibold self-start md:-mt-6";
@@ -57,7 +57,7 @@ const Reply = ({ reply }) => {
   };
 
   return (
-    <div className="mt-6 ml-14">
+    <div className="mt-4 ml-6">
       <div className="px-4 py-6 max-w-lg mx-auto bg-white flex flex-wrap gap-1 items-center rounded-lg md:flex-col sm:p-4">
         <Counter
           value={value}
@@ -94,7 +94,7 @@ const Reply = ({ reply }) => {
           </div>
         </div>
       </div>
-      <AddReplyComment show={showReplyComponent} />
+      <AddReply show={showReplyComponent} />
     </div>
   );
 };
