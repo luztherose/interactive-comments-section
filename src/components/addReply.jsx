@@ -2,14 +2,14 @@ import React from "react";
 import userAvatar from "../images/avatars/image-amyrobson.png";
 
 const getAddReplyCommentClasses = (show) => {
-  let classes = "mt-8 bg-gray-100";
+  let classes = "mt-2 bg-gray-100";
   if (!show) {
     return (classes += " hidden");
   }
   return (classes += " block");
 };
 
-const AddReplyComment = ({show}) => {
+const AddReply = ({show}) => {
   return (
     <section className={getAddReplyCommentClasses(show)}>
       <div className="p-5 max-w-lg mx-auto bg-white flex items-start rounded-lg md:flex-col md:max-w-md sm:max-w-xl">
@@ -32,4 +32,4 @@ const AddReplyComment = ({show}) => {
   );
 };
 
-export default AddReplyComment;
+export default AddReply;

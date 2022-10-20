@@ -11,19 +11,21 @@ const App = () => {
   console.log(comments);
   return (
     <div>
-      <main className="bg-gray-100 p-12">
-        {comments.map((comment, index) => {
-          return (
-            <>
-              <Comment user="" comment={comment} key={comment.id} />
-              <section className="mt-8">
-                {comment.replies.map((reply) => {
-                  return <Reply user="" reply={reply} key={reply.id} />;
-                })}
-              </section>
-            </>
-          );
-        })}
+      <main className="bg-gray-100 p-8">
+        <section className="mt-4">
+          {comments.map((comment, index) => {
+            return (
+              <>
+                <Comment user="" comment={comment} key={comment.id} />
+                <section className="mt-4 mx-auto border-l border-gray-300 h-full w-fit">
+                  {comment.replies.map((reply) => {
+                    return <Reply user="" reply={reply} key={reply.id} />;
+                  })}
+                </section>
+              </>
+            );
+          })}
+        </section>
         {/* <UserCommentReply /> */}
         <AddComment />
       </main>

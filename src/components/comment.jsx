@@ -3,7 +3,7 @@ import userAvatar from "../images/avatars/image-amyrobson.png";
 import iconReply from "../images/icon-reply.svg";
 import Counter from "./counter";
 import EditDeleteComment from "./editDeleteComment";
-import AddReplyComment from "./addReplyComment";
+import AddReply from "./addReply";
 
 const getReplyButtonClasses = (isReplyActive) => {
   let classes = "w-2/5 text-sm font-semibold self-start md:-mt-6";
@@ -58,7 +58,7 @@ const Comment = ({ user, comment }) => {
   };
 
   return (
-    <section className="mt-8">
+    <React.Fragment className="mt-4">
       <div className="px-5 py-8 max-w-xl mx-auto bg-white flex flex-wrap gap-1 items-start rounded-lg md:flex-col sm:p-4">
         <Counter
           value={value}
@@ -92,8 +92,8 @@ const Comment = ({ user, comment }) => {
           </div>
         </div>
       </div>
-      <AddReplyComment show={showReplyComponent} />
-    </section>
+      <AddReply show={showReplyComponent} />
+    </React.Fragment>
   );
 };
 
