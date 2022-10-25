@@ -12,11 +12,32 @@ const getReplyButtonClasses = (isReplyActive) => {
   return (classes += " text-lightGrayishBlue");
 };
 
+const whatToDisplay = (isEditMode, username, content, replyingTo) => {
+  if (isEditMode && username === "juliusomo") {
+    return (
+      <textarea
+        className="border border-moderateBlue pt-1 pl-3 w-11/12 h-20 resize-none rounded text-sm"
+        placeholder="Add a comment"
+        value={content}
+      ></textarea>
+    );
+  } else {
+    return (
+      <p className="text-sm text-gray-600 text-start w-11/12 sm:ml-0">
+        <span className="font-semibold text-sm text-moderateBlue">
+          @ {replyingTo}
+        </span>{" "}
+        {content}
+      </p>
+    );
+  }
+};
 const Reply = ({ reply }) => {
   const [isReplyActive, setIsReplyActive] = useState(false);
   const [showReplyComponent, setShowReplyComponent] = useState(false);
+  const [showEditMode, setShowEditMode] = useState(reply.isEditMode);
   let [value, setValue] = useState(reply.score);
-  const { content, createdAt, replyingTo } = reply;
+  const { content, createdAt, replyingTo, isEditMode } = reply;
   const { username, image } = reply.user;
 
   const getImageURL = (url) => {
@@ -26,6 +47,9 @@ const Reply = ({ reply }) => {
   const handleReply = () => {
     setShowReplyComponent(true);
     setIsReplyActive(true);
+  };
+  const handleEditMode = () => {
+    setShowEditMode(reply.isEditMode = true);
   };
 
   const handleIncrement = () => {
@@ -40,7 +64,7 @@ const Reply = ({ reply }) => {
 
   const displayButtonBasedOnUser = (user) => {
     if (user === "juliusomo") {
-      return <EditDeleteComment />;
+      return <EditDeleteComment onEditMode={handleEditMode} />;
     }
     return (
       <button
@@ -57,8 +81,8 @@ const Reply = ({ reply }) => {
   };
 
   return (
-    <div className="mt-4 ml-6">
-      <div className="px-4 py-6 max-w-lg mx-auto bg-white flex flex-wrap gap-1 items-center rounded-lg md:flex-col sm:p-4">
+    <div className="mt-4 ml-6 w-full">
+      <div className="px-4 py-6 w-full mx-auto bg-white flex gap-1 items-center rounded-lg md:flex-col sm:p-4">
         <Counter
           value={value}
           onIncrement={handleIncrement}
@@ -85,13 +109,15 @@ const Reply = ({ reply }) => {
             {displayButtonBasedOnUser(username)}
           </div>
           <div className="grow  w-full ml-3 mr-3 text-center md:order-first md:mx-auto sm:w-full md:w-5/5">
-            <p className="text-sm text-gray-600 text-start w-11/12 sm:ml-0">
-              <span className="font-semibold text-sm text-moderateBlue">
-                @ {replyingTo}
-              </span>{" "}
-              {content}
-            </p>
+            {whatToDisplay(isEditMode, username, content, replyingTo)}
           </div>
+          {isEditMode && username === "juliusomo" && (
+            <div className="flex w-full justify-end mr-3 mt-2  mb-2 text-sm md:m-0 md:w-11/12 md:-mt-3">
+              <button className="grow-0 px-4 py-2 text-white font-semibold rounded-lg border bg-moderateBlue md:self-end md:-mt-6 md:mr-9 sm:mr-0 md:px-4 md:py-1">
+                UPDATE
+              </button>
+            </div>
+          )}
         </div>
       </div>
       <AddReply show={showReplyComponent} />
