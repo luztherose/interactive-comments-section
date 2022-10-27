@@ -5,13 +5,14 @@ import { getButtonClasses } from "../utils/helpers";
 
 const CommentPrimaryActionButtons = ({
   isLoggedUser,
+  isCommentUpdated,
   onReplyClick,
   onEditClick,
 }) => {
   const [isReplyActive, setIsReplyActive] = useState(false);
 
   if (isLoggedUser) {
-    return <EditDeleteComment onEditClick={onEditClick} />;
+    return <EditDeleteComment onEditClick={onEditClick} isCommentUpdated={isCommentUpdated}/>;
   }
   return (
     <button

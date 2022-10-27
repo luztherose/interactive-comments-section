@@ -4,8 +4,9 @@ import CommentBody from "./commentBody";
 import Counter from "./counter";
 import AddReply from "./addReply";
 
-const Reply = ({ reply, isLoggedUser }) => {
+const Reply = ({ reply, isLoggedUser, onUpdateClick }) => {
   const [isReplyActive, setIsReplyActive] = useState(false);
+  const [isCommentUpdated, setIsCommentUpdated] = useState(false);
   const [showReplyComponent, setShowReplyComponent] = useState(false);
   const [showEditMode, setShowEditMode] = useState(false);
   let [value, setValue] = useState(reply.score);
@@ -16,6 +17,12 @@ const Reply = ({ reply, isLoggedUser }) => {
   };
   const handleEditClick = () => {
     setShowEditMode(true);
+  };
+
+  const handleUpdateClick = (replyID, newContent) => {
+    onUpdateClick(replyID, newContent);
+    setShowEditMode(false);
+    setIsCommentUpdated(true);
   };
 
   const handleIncrement = () => {
@@ -40,11 +47,16 @@ const Reply = ({ reply, isLoggedUser }) => {
           <CommentHeader
             comment={reply}
             isLoggedUser={isLoggedUser}
+            isCommentUpdated={isCommentUpdated}
             isReplyActive={isReplyActive}
             onReplyClick={handleReply}
             onEditClick={handleEditClick}
           />
-          <CommentBody editable={showEditMode} comment={reply} />
+          <CommentBody
+            editable={showEditMode}
+            comment={reply}
+            onUpdateClick={handleUpdateClick}
+          />
         </div>
       </div>
       <AddReply show={showReplyComponent} />
