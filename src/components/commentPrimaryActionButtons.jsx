@@ -4,15 +4,24 @@ import iconReply from "../images/icon-reply.svg";
 import { getButtonClasses } from "../utils/helpers";
 
 const CommentPrimaryActionButtons = ({
+  comment,
   isLoggedUser,
   isCommentUpdated,
   onReplyClick,
   onEditClick,
+  onDeleteClick,
 }) => {
   const [isReplyActive, setIsReplyActive] = useState(false);
 
   if (isLoggedUser) {
-    return <EditDeleteComment onEditClick={onEditClick} isCommentUpdated={isCommentUpdated}/>;
+    return (
+      <EditDeleteComment
+        comment={comment}
+        onEditClick={onEditClick}
+        onDeleteClick={onDeleteClick}
+        isCommentUpdated={isCommentUpdated}
+      />
+    );
   }
   return (
     <button
