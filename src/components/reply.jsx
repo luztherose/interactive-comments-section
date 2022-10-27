@@ -4,7 +4,7 @@ import CommentBody from "./commentBody";
 import Counter from "./counter";
 import AddReply from "./addReply";
 
-const Reply = ({ reply, isLoggedUser, onUpdateClick }) => {
+const Reply = ({ reply, isLoggedUser, onUpdateClick, onDeleteClick }) => {
   const [isReplyActive, setIsReplyActive] = useState(false);
   const [isCommentUpdated, setIsCommentUpdated] = useState(false);
   const [showReplyComponent, setShowReplyComponent] = useState(false);
@@ -51,6 +51,7 @@ const Reply = ({ reply, isLoggedUser, onUpdateClick }) => {
             isReplyActive={isReplyActive}
             onReplyClick={handleReply}
             onEditClick={handleEditClick}
+            onDeleteClick={onDeleteClick}
           />
           <CommentBody
             editable={showEditMode}

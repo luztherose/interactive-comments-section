@@ -3,11 +3,20 @@ import iconDelete from "../images/icon-delete.svg";
 import iconEdit from "../images/icon-edit.svg";
 import { getButtonClasses } from "../utils/helpers";
 
-const EditDeleteComment = ({ onEditClick, isEditMode, isCommentUpdated }) => {
+const EditDeleteComment = ({
+  comment,
+  onEditClick,
+  onDeleteClick,
+  isEditMode,
+  isCommentUpdated,
+}) => {
   const [isEdit, setIsEdit] = useState(false);
   return (
     <div className="w-2/5">
-      <button className="w-3/5 text-sm text-softRed font-semibold md:self-end md:-mt-6">
+      <button
+        className="w-3/5 text-sm text-softRed font-semibold md:self-end md:-mt-6"
+        onClick={() => onDeleteClick(comment.id)}
+      >
         <span className="inline-block mr-1">
           <img className="" src={iconDelete} alt="user profile's avatar" />
         </span>

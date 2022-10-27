@@ -36,6 +36,22 @@ const App = () => {
     setComments(updatedReplies);
   };
 
+  const handleDeleteComment = (commentID) => {
+    const newData = comments.filter((comment) => comment.id !== commentID);
+    setComments(newData);
+  };
+
+  const handleDeleteReply = (replyID) => {
+    const deleteReply = (comment) => {
+      return comment.replies.filter((reply) => reply.id !== replyID);
+    };
+    const newData = comments.map((comment) => {
+      return { ...comment, replies: deleteReply(comment) };
+    });
+
+    setComments(newData);
+  };
+
   return (
     <div>
       <main className="bg-gray-100 p-8">
@@ -47,8 +63,9 @@ const App = () => {
                   comment={comment}
                   key={index}
                   id={comment.id}
-                  isLoggedUser={comment.user.username === "maxblagun"}
+                  isLoggedUser={comment.user.username === "amyrobson"}
                   onUpdateClick={handleDataOnUpdateClick}
+                  onDeleteClick={handleDeleteComment}
                 />
                 <section className="mt-4 mx-auto border-l border-gray-300 h-full max-w-lg">
                   {comment.replies.map((reply, index) => {
@@ -59,6 +76,7 @@ const App = () => {
                         id={reply.id}
                         isLoggedUser={reply.user.username === "juliusomo"}
                         onUpdateClick={handleReplyDataOnUpdateClick}
+                        onDeleteClick={handleDeleteReply}
                       />
                     );
                   })}
