@@ -7,6 +7,7 @@ import data from "./data/data.json";
 
 const App = () => {
   const [comments, setComments] = useState(data.comments);
+  const [isCommentAdded, setIsCommentAdded] = useState(false);
 
   const handleDataOnUpdateClick = (commentID, newContent) => {
     const updatedComments = comments.map((comment) => {
@@ -52,6 +53,26 @@ const App = () => {
     setComments(newData);
   };
 
+  const handleCreateComment = (input) => {
+    const comment = {
+      id: comments.length + 1,
+      content: input,
+      createdAt: "2 days ago",
+      score: 0,
+      user: {
+        image: {
+          png: "./images/avatars/image-juliusomo.png",
+          webp: "./images/avatars/image-juliusomo.webp",
+        },
+        username: "juliusomo",
+      },
+      replies: [],
+    };
+    const newData = [...comments, comment];
+    setComments(newData);
+    setIsCommentAdded(true);
+  };
+
   return (
     <div>
       <main className="bg-gray-100 p-8">
@@ -85,7 +106,10 @@ const App = () => {
             );
           })}
         </section>
-        <AddComment />
+        <AddComment
+          onSendClick={handleCreateComment}
+          isCommentAdded={isCommentAdded}
+        />
       </main>
       <Footer />
     </div>

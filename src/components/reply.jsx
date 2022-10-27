@@ -36,7 +36,7 @@ const Reply = ({ reply, isLoggedUser, onUpdateClick, onDeleteClick }) => {
   };
 
   return (
-    <div className="mt-4 ml-6 w-full">
+    <div className="mt-4 ml-6 w-full mb-4 ">
       <div className="px-4 py-6 w-full mx-auto bg-white flex gap-1 items-center rounded-lg md:flex-col sm:p-4">
         <Counter
           value={value}
