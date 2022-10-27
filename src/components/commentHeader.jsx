@@ -6,6 +6,7 @@ const CommentHeader = ({
   comment,
   onReplyClick,
   isLoggedUser,
+  isCommentUpdated,
   onEditClick,
 }) => {
   const { createdAt, user } = comment;
@@ -31,6 +32,7 @@ const CommentHeader = ({
       </div>
       <CommentPrimaryActionButtons
         isLoggedUser={isLoggedUser}
+        isCommentUpdated={isCommentUpdated}
         onReplyClick={onReplyClick}
         onEditClick={onEditClick}
       />
