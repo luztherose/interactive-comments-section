@@ -4,14 +4,23 @@ import CommentBody from "./commentBody";
 import Counter from "./counter";
 import AddReply from "./addReply";
 
-const Comment = ({ comment, isLoggedUser, onUpdateClick, onDeleteClick }) => {
+const Comment = ({
+  comment,
+  isLoggedUser,
+  onUpdateClick,
+  onDeleteClick,
+  onReplyComment,
+  isReplyToCommentAdded,
+}) => {
   const [showReplyComponent, setShowReplyComponent] = useState(false);
   const [showEditMode, setShowEditMode] = useState(false);
   const [isCommentUpdated, setIsCommentUpdated] = useState(false);
+  const [isReplyAdded, setIsReplyAdded] = useState(false);
   let [value, setValue] = useState(comment.score);
 
   const handleReply = () => {
     setShowReplyComponent(true);
+    setIsReplyAdded(true);
   };
 
   const handleEditClick = () => {
@@ -50,6 +59,8 @@ const Comment = ({ comment, isLoggedUser, onUpdateClick, onDeleteClick }) => {
             onReplyClick={handleReply}
             onEditClick={handleEditClick}
             onDeleteClick={onDeleteClick}
+            isReplyToCommentAdded={isReplyToCommentAdded}
+            isReplyAdded={isReplyAdded}
           />
           <CommentBody
             editable={showEditMode}
@@ -59,7 +70,12 @@ const Comment = ({ comment, isLoggedUser, onUpdateClick, onDeleteClick }) => {
           />
         </div>
       </div>
-      <AddReply show={showReplyComponent} />
+      <AddReply
+        comment={comment}
+        show={showReplyComponent}
+        onReplyComment={onReplyComment}
+        isReplyToCommentAdded={isReplyToCommentAdded}
+      />
     </Fragment>
   );
 };

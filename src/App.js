@@ -8,6 +8,7 @@ import data from "./data/data.json";
 const App = () => {
   const [comments, setComments] = useState(data.comments);
   const [isCommentAdded, setIsCommentAdded] = useState(false);
+  const [isReplyToCommentAdded, setIsReplyToCommentAdded] = useState(false);
 
   const handleDataOnUpdateClick = (commentID, newContent) => {
     const updatedComments = comments.map((comment) => {
@@ -73,6 +74,44 @@ const App = () => {
     setIsCommentAdded(true);
   };
 
+  const handleCreateReply = (comment, reply, replyInput) => {
+    const getUsername = (reply) => {
+      if (reply) {
+        return reply.user.username;
+      } else {
+        {
+          return comment.user.username;
+        }
+      }
+    };
+    const newReply = {
+      id: comments.length + 3,
+      content: replyInput,
+      createdAt: "1 week ago",
+      score: 0,
+      replyingTo: getUsername(reply),
+      user: {
+        image: {
+          png: "./images/avatars/image-maxblagun.png",
+          webp: "./images/avatars/image-maxblagun.webp",
+        },
+        username: "maxblagun",
+      },
+    };
+
+    const newData = [...comments].map((currentComment) => {
+      if (currentComment.id === comment.id) {
+        const comment = { ...currentComment };
+        const replies = [...currentComment.replies, newReply];
+        return { ...comment, replies };
+      } else {
+        return currentComment;
+      }
+    });
+    setComments(newData);
+    setIsReplyToCommentAdded(true);
+  };
+
   return (
     <div>
       <main className="bg-gray-100 p-8">
@@ -84,20 +123,25 @@ const App = () => {
                   comment={comment}
                   key={index}
                   id={comment.id}
-                  isLoggedUser={comment.user.username === "amyrobson"}
+                  isLoggedUser={comment.user.username === ""}
                   onUpdateClick={handleDataOnUpdateClick}
                   onDeleteClick={handleDeleteComment}
+                  onReplyComment={handleCreateReply}
+                  isReplyToCommentAdded={isReplyToCommentAdded}
                 />
                 <section className="mt-4 mx-auto border-l border-gray-300 h-full max-w-lg">
                   {comment.replies.map((reply, index) => {
                     return (
                       <Reply
+                        comment={comment}
                         reply={reply}
                         key={index}
                         id={reply.id}
                         isLoggedUser={reply.user.username === "juliusomo"}
                         onUpdateClick={handleReplyDataOnUpdateClick}
                         onDeleteClick={handleDeleteReply}
+                        onReplyComment={handleCreateReply}
+                        isReplyToCommentAdded={isReplyToCommentAdded}
                       />
                     );
                   })}
