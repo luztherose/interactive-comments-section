@@ -4,7 +4,16 @@ import CommentBody from "./commentBody";
 import Counter from "./counter";
 import AddReply from "./addReply";
 
-const Reply = ({ reply, isLoggedUser, onUpdateClick, onDeleteClick }) => {
+const Reply = ({
+  comment,
+  reply,
+  isLoggedUser,
+  onUpdateClick,
+  onDeleteClick,
+  onReplyComment,
+  isReplyToCommentAdded
+  
+}) => {
   const [isReplyActive, setIsReplyActive] = useState(false);
   const [isCommentUpdated, setIsCommentUpdated] = useState(false);
   const [showReplyComponent, setShowReplyComponent] = useState(false);
@@ -60,7 +69,13 @@ const Reply = ({ reply, isLoggedUser, onUpdateClick, onDeleteClick }) => {
           />
         </div>
       </div>
-      <AddReply show={showReplyComponent} />
+      <AddReply
+        show={showReplyComponent}
+        onReplyComment={onReplyComment}
+        comment={comment}
+        reply={reply}
+        isReplyToCommentAdded={isReplyToCommentAdded}
+      />
     </div>
   );
 };
