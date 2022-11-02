@@ -8,7 +8,7 @@ import data from "./data/data.json";
 const App = () => {
   const [comments, setComments] = useState(data.comments);
   const [isCommentAdded, setIsCommentAdded] = useState(false);
-  const [isReplyToCommentAdded, setIsReplyToCommentAdded] = useState(false);
+  const [replyToCommentInput, setReplyToCommentInput] = useState("");
 
   const handleDataOnUpdateClick = (commentID, newContent) => {
     const updatedComments = comments.map((comment) => {
@@ -74,7 +74,7 @@ const App = () => {
     setIsCommentAdded(true);
   };
 
-  const handleCreateReply = (comment, reply, replyInput) => {
+  const handleCreateReply = (comment, reply) => {
     const getUsername = (reply) => {
       if (reply) {
         return reply.user.username;
@@ -86,7 +86,7 @@ const App = () => {
     };
     const newReply = {
       id: comments.length + 3,
-      content: replyInput,
+      content: replyToCommentInput,
       createdAt: "1 week ago",
       score: 0,
       replyingTo: getUsername(reply),
@@ -109,7 +109,7 @@ const App = () => {
       }
     });
     setComments(newData);
-    setIsReplyToCommentAdded(true);
+    setReplyToCommentInput("");
   };
 
   return (
@@ -127,7 +127,8 @@ const App = () => {
                   onUpdateClick={handleDataOnUpdateClick}
                   onDeleteClick={handleDeleteComment}
                   onReplyComment={handleCreateReply}
-                  isReplyToCommentAdded={isReplyToCommentAdded}
+                  replyToCommentInput={replyToCommentInput}
+                  onReplyToCommentInput={setReplyToCommentInput}
                 />
                 <section className="mt-4 mx-auto border-l border-gray-300 h-full max-w-lg">
                   {comment.replies.map((reply, index) => {
@@ -141,7 +142,8 @@ const App = () => {
                         onUpdateClick={handleReplyDataOnUpdateClick}
                         onDeleteClick={handleDeleteReply}
                         onReplyComment={handleCreateReply}
-                        isReplyToCommentAdded={isReplyToCommentAdded}
+                        replyToCommentInput={replyToCommentInput}
+                        onReplyToCommentInput={setReplyToCommentInput}
                       />
                     );
                   })}

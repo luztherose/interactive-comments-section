@@ -11,18 +11,20 @@ const Reply = ({
   onUpdateClick,
   onDeleteClick,
   onReplyComment,
-  isReplyToCommentAdded
-  
+  replyToCommentInput,
+  onReplyToCommentInput,
 }) => {
-  const [isReplyActive, setIsReplyActive] = useState(false);
+  const [isReplyDisabled, setIsReplyDisabled] = useState(false);
   const [isCommentUpdated, setIsCommentUpdated] = useState(false);
+  const [isReplyAdded, setIsReplyAdded] = useState(false);
   const [showReplyComponent, setShowReplyComponent] = useState(false);
   const [showEditMode, setShowEditMode] = useState(false);
   let [value, setValue] = useState(reply.score);
 
   const handleReply = () => {
     setShowReplyComponent(true);
-    setIsReplyActive(true);
+    setIsReplyAdded(true);
+    setIsReplyDisabled(true);
   };
   const handleEditClick = () => {
     setShowEditMode(true);
@@ -57,7 +59,8 @@ const Reply = ({
             comment={reply}
             isLoggedUser={isLoggedUser}
             isCommentUpdated={isCommentUpdated}
-            isReplyActive={isReplyActive}
+            isReplyAdded={isReplyAdded}
+            isReplyDisabled={isReplyDisabled}
             onReplyClick={handleReply}
             onEditClick={handleEditClick}
             onDeleteClick={onDeleteClick}
@@ -71,10 +74,15 @@ const Reply = ({
       </div>
       <AddReply
         show={showReplyComponent}
-        onReplyComment={onReplyComment}
-        comment={comment}
         reply={reply}
-        isReplyToCommentAdded={isReplyToCommentAdded}
+        comment={comment}
+        onReplyComment={() => {
+          onReplyComment(comment, reply);
+          setShowReplyComponent(false);
+          setIsReplyDisabled(false);
+        }}
+        replyToCommentInput={replyToCommentInput}
+        onReplyToCommentInput={onReplyToCommentInput}
       />
     </div>
   );

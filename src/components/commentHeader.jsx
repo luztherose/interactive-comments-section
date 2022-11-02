@@ -9,8 +9,8 @@ const CommentHeader = ({
   isCommentUpdated,
   onEditClick,
   onDeleteClick,
-  isReplyToCommentAdded,
   isReplyAdded,
+  isReplyDisabled,
 }) => {
   const { createdAt, user } = comment;
   const { username, image } = user;
@@ -38,10 +38,10 @@ const CommentHeader = ({
         isLoggedUser={isLoggedUser}
         isCommentUpdated={isCommentUpdated}
         isReplyAdded={isReplyAdded}
-        isReplyToCommentAdded={isReplyToCommentAdded}
         onReplyClick={onReplyClick}
         onEditClick={onEditClick}
         onDeleteClick={onDeleteClick}
+        isReplyDisabled={isReplyDisabled}
       />
     </div>
   );
