@@ -10,17 +10,21 @@ const Comment = ({
   onUpdateClick,
   onDeleteClick,
   onReplyComment,
-  isReplyToCommentAdded,
+  replyToCommentInput,
+  onReplyToCommentInput,
 }) => {
   const [showReplyComponent, setShowReplyComponent] = useState(false);
   const [showEditMode, setShowEditMode] = useState(false);
   const [isCommentUpdated, setIsCommentUpdated] = useState(false);
   const [isReplyAdded, setIsReplyAdded] = useState(false);
+  const [isReplyDisabled, setIsReplyDisabled] = useState(false);
+
   let [value, setValue] = useState(comment.score);
 
   const handleReply = () => {
     setShowReplyComponent(true);
     setIsReplyAdded(true);
+    setIsReplyDisabled(true);
   };
 
   const handleEditClick = () => {
@@ -59,8 +63,8 @@ const Comment = ({
             onReplyClick={handleReply}
             onEditClick={handleEditClick}
             onDeleteClick={onDeleteClick}
-            isReplyToCommentAdded={isReplyToCommentAdded}
             isReplyAdded={isReplyAdded}
+            isReplyDisabled={isReplyDisabled}
           />
           <CommentBody
             editable={showEditMode}
@@ -73,8 +77,13 @@ const Comment = ({
       <AddReply
         comment={comment}
         show={showReplyComponent}
-        onReplyComment={onReplyComment}
-        isReplyToCommentAdded={isReplyToCommentAdded}
+        onReplyComment={(comment, reply) => {
+          onReplyComment(comment, reply);
+          setShowReplyComponent(false);
+          setIsReplyDisabled(false);
+        }}
+        replyToCommentInput={replyToCommentInput}
+        onReplyToCommentInput={onReplyToCommentInput}
       />
     </Fragment>
   );

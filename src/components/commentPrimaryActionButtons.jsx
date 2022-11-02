@@ -10,9 +10,8 @@ const CommentPrimaryActionButtons = ({
   onReplyClick,
   onEditClick,
   onDeleteClick,
+  isReplyDisabled,
 }) => {
-  const [isReplyActive, setIsReplyActive] = useState(false);
-
   if (isLoggedUser) {
     return (
       <EditDeleteComment
@@ -25,9 +24,9 @@ const CommentPrimaryActionButtons = ({
   }
   return (
     <button
-      className={getButtonClasses(isReplyActive)}
-      disabled={isReplyActive}
-      onClick={() => onReplyClick(setIsReplyActive(true))}
+      className={getButtonClasses(isReplyDisabled)}
+      disabled={isReplyDisabled}
+      onClick={() => onReplyClick()}
     >
       <span className="inline-block mr-1">
         <img src={iconReply} alt="user profile's avatar" />
