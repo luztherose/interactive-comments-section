@@ -116,12 +116,12 @@ const App = () => {
     <div>
       <main className="bg-gray-100 p-8">
         <section className="mt-4">
-          {comments.map((comment, index) => {
+          {comments.map((comment) => {
             return (
               <>
                 <Comment
                   comment={comment}
-                  key={index}
+                  key={comment.id}
                   id={comment.id}
                   isLoggedUser={comment.user.username === ""}
                   onUpdateClick={handleDataOnUpdateClick}
@@ -131,12 +131,12 @@ const App = () => {
                   onReplyToCommentInput={setReplyToCommentInput}
                 />
                 <section className="mt-4 mx-auto border-l border-gray-300 h-full max-w-lg">
-                  {comment.replies.map((reply, index) => {
+                  {comment.replies.map((reply) => {
                     return (
                       <Reply
                         comment={comment}
                         reply={reply}
-                        key={index}
+                        key={reply.id}
                         id={reply.id}
                         isLoggedUser={reply.user.username === "juliusomo"}
                         onUpdateClick={handleReplyDataOnUpdateClick}
