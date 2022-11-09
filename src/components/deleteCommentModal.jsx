@@ -9,7 +9,12 @@ const getDeleteCommentClasses = (show) => {
   return (classes += " block");
 };
 
-const DeleteCommentModal = ({ show }) => {
+const DeleteCommentModal = ({
+  show,
+  comment,
+  onDeleteClick,
+  onCancelClick,
+}) => {
   return (
     <div className={getDeleteCommentClasses(show)}>
       <div className="max-w-sm bg-white rounded-lg px-6 py-6 ring-1 ring-slate-900/5 shadow-xl">
@@ -21,10 +26,16 @@ const DeleteCommentModal = ({ show }) => {
           comment and can't be undone.
         </p>
         <div className="mt-4 flex justify-center gap-4">
-          <button className="px-8 py-3 text-sm text-white font-semibold rounded-lg bg-darkBlue">
+          <button
+            className="px-8 py-3 text-sm text-white font-semibold rounded-lg bg-darkBlue"
+            onClick={() => onCancelClick(false)}
+          >
             NO, CANCEL
           </button>
-          <button className="px-8 py-3 text-sm text-white font-semibold rounded-lg bg-softRed">
+          <button
+            className="px-8 py-3 text-sm text-white font-semibold rounded-lg bg-softRed"
+            onClick={() => onDeleteClick(comment.id)}
+          >
             YES, DELETE
           </button>
         </div>

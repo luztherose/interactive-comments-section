@@ -123,7 +123,7 @@ const App = () => {
                   comment={comment}
                   key={comment.id}
                   id={comment.id}
-                  isLoggedUser={comment.user.username === ""}
+                  isLoggedUser={comment.user.username === "amyrobson"}
                   onUpdateClick={handleDataOnUpdateClick}
                   onDeleteClick={handleDeleteComment}
                   onReplyComment={handleCreateReply}
