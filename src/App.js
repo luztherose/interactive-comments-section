@@ -6,6 +6,7 @@ import Reply from "./components/reply.jsx";
 import data from "./data/data.json";
 
 const App = () => {
+  const [currentUser, setCurrentUser] = useState(data.currentUser);
   const [comments, setComments] = useState(data.comments);
   const [isCommentAdded, setIsCommentAdded] = useState(false);
   const [replyToCommentInput, setReplyToCommentInput] = useState("");
@@ -75,6 +76,8 @@ const App = () => {
   };
 
   const handleCreateReply = (comment, reply) => {
+    const { username, image } = currentUser;
+
     const getUsername = (reply) => {
       if (reply) {
         return reply.user.username;
@@ -92,10 +95,10 @@ const App = () => {
       replyingTo: getUsername(reply),
       user: {
         image: {
-          png: "./images/avatars/image-maxblagun.png",
-          webp: "./images/avatars/image-maxblagun.webp",
+          png: image.png,
+          webp: image.webp,
         },
-        username: "maxblagun",
+        username: username,
       },
     };
 
@@ -120,10 +123,11 @@ const App = () => {
             return (
               <>
                 <Comment
+                  currentUser={currentUser}
                   comment={comment}
                   key={comment.id}
                   id={comment.id}
-                  isLoggedUser={comment.user.username === "amyrobson"}
+                  isLoggedUser={comment.user.username === currentUser.username}
                   onUpdateClick={handleDataOnUpdateClick}
                   onDeleteClick={handleDeleteComment}
                   onReplyComment={handleCreateReply}
@@ -134,11 +138,14 @@ const App = () => {
                   {comment.replies.map((reply) => {
                     return (
                       <Reply
+                        currentUser={currentUser}
                         comment={comment}
                         reply={reply}
                         key={reply.id}
                         id={reply.id}
-                        isLoggedUser={reply.user.username === "juliusomo"}
+                        isLoggedUser={
+                          reply.user.username === currentUser.username
+                        }
                         onUpdateClick={handleReplyDataOnUpdateClick}
                         onDeleteClick={handleDeleteReply}
                         onReplyComment={handleCreateReply}
@@ -155,6 +162,7 @@ const App = () => {
         <AddComment
           onSendClick={handleCreateComment}
           isCommentAdded={isCommentAdded}
+          currentUser={currentUser}
         />
       </main>
       <Footer />
