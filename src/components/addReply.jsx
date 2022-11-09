@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import userAvatar from "../images/avatars/image-amyrobson.png";
+import { getImageURL } from "../utils/helpers";
 
 const getAddReplyCommentClasses = (show) => {
   let classes = "mt-2 bg-gray-100";
@@ -16,6 +16,7 @@ const AddReply = ({
   reply,
   replyToCommentInput,
   onReplyToCommentInput,
+  currentUser,
 }) => {
   const handleReplyMessage = (event) => {
     onReplyToCommentInput(event.target.value);
@@ -26,7 +27,7 @@ const AddReply = ({
       <div className="p-5 max-w-lg mx-auto bg-white flex items-start rounded-lg md:flex-col md:max-w-md sm:max-w-xl">
         <img
           className="grow-0 block mx-auto h-8 rounded-full sm:mx-0 sm:shrink-0 md:ml-14 md:mt-3"
-          src={userAvatar}
+          src={getImageURL(currentUser.image.png)}
           alt="user profile's avatar"
         />
         <div className="grow ml-3 mr-3 text-center md:order-first md:mx-auto sm:w-full md:w-4/5">

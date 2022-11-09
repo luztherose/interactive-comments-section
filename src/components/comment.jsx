@@ -6,6 +6,7 @@ import AddReply from "./addReply";
 import DeleteCommentModal from "./deleteCommentModal";
 
 const Comment = ({
+  currentUser,
   comment,
   isLoggedUser,
   onUpdateClick,
@@ -79,6 +80,7 @@ const Comment = ({
         </div>
       </div>
       <AddReply
+        currentUser={currentUser}
         comment={comment}
         show={showReplyComponent}
         onReplyComment={(comment, reply) => {
