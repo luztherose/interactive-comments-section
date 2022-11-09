@@ -3,6 +3,7 @@ import CommentHeader from "./commentHeader";
 import CommentBody from "./commentBody";
 import Counter from "./counter";
 import AddReply from "./addReply";
+import DeleteCommentModal from "./deleteCommentModal";
 
 const Reply = ({
   comment,
@@ -18,6 +19,7 @@ const Reply = ({
   const [isCommentUpdated, setIsCommentUpdated] = useState(false);
   const [isReplyAdded, setIsReplyAdded] = useState(false);
   const [showReplyComponent, setShowReplyComponent] = useState(false);
+  const [showDeleteCommentModal, setShowDeleteCommentModal] = useState(false);
   const [showEditMode, setShowEditMode] = useState(false);
   let [value, setValue] = useState(reply.score);
 
@@ -63,7 +65,10 @@ const Reply = ({
             isReplyDisabled={isReplyDisabled}
             onReplyClick={handleReply}
             onEditClick={handleEditClick}
-            onDeleteClick={onDeleteClick}
+            onDeleteClick={(id) => {
+              setShowDeleteCommentModal(true);
+              // onDeleteClick(id);
+            }}
           />
           <CommentBody
             editable={showEditMode}
@@ -84,6 +89,7 @@ const Reply = ({
         replyToCommentInput={replyToCommentInput}
         onReplyToCommentInput={onReplyToCommentInput}
       />
+      <DeleteCommentModal show={showDeleteCommentModal} />
     </div>
   );
 };
