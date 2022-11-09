@@ -1,4 +1,4 @@
-import { useState, Fragment } from "react";
+import { useState, useEffect } from "react";
 import Footer from "./components/footer.jsx";
 import AddComment from "./components/addComment.jsx";
 import Comment from "./components/comment.jsx";
@@ -6,10 +6,21 @@ import Reply from "./components/reply.jsx";
 import data from "./data/data.json";
 
 const App = () => {
-  const [currentUser, setCurrentUser] = useState(data.currentUser);
-  const [comments, setComments] = useState(data.comments);
+  const initialCurrentUser =
+    JSON.parse(localStorage.getItem("currentUser")) ?? data.currentUser;
+  const initialComments =
+    JSON.parse(localStorage.getItem("comments")) ?? data.comments;
+
+  const [currentUser, setCurrentUser] = useState(initialCurrentUser);
+  const [comments, setComments] = useState(initialComments);
+
   const [isCommentAdded, setIsCommentAdded] = useState(false);
   const [replyToCommentInput, setReplyToCommentInput] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("currentUser", JSON.stringify(currentUser));
+    localStorage.setItem("comments", JSON.stringify(comments));
+  }, [currentUser, comments]);
 
   const handleDataOnUpdateClick = (commentID, newContent) => {
     const updatedComments = comments.map((comment) => {
