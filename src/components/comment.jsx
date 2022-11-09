@@ -3,6 +3,7 @@ import CommentHeader from "./commentHeader";
 import CommentBody from "./commentBody";
 import Counter from "./counter";
 import AddReply from "./addReply";
+import DeleteCommentModal from "./deleteCommentModal";
 
 const Comment = ({
   comment,
@@ -15,6 +16,7 @@ const Comment = ({
 }) => {
   const [showReplyComponent, setShowReplyComponent] = useState(false);
   const [showEditMode, setShowEditMode] = useState(false);
+  const [showDeleteCommentModal, setShowDeleteCommentModal] = useState(false);
   const [isCommentUpdated, setIsCommentUpdated] = useState(false);
   const [isReplyAdded, setIsReplyAdded] = useState(false);
   const [isReplyDisabled, setIsReplyDisabled] = useState(false);
@@ -62,7 +64,9 @@ const Comment = ({
             isCommentUpdated={isCommentUpdated}
             onReplyClick={handleReply}
             onEditClick={handleEditClick}
-            onDeleteClick={onDeleteClick}
+            onDeleteClick={() => {
+              setShowDeleteCommentModal(true);
+            }}
             isReplyAdded={isReplyAdded}
             isReplyDisabled={isReplyDisabled}
           />
@@ -84,6 +88,12 @@ const Comment = ({
         }}
         replyToCommentInput={replyToCommentInput}
         onReplyToCommentInput={onReplyToCommentInput}
+      />
+      <DeleteCommentModal
+        show={showDeleteCommentModal}
+        comment={comment}
+        onDeleteClick={onDeleteClick}
+        onCancelClick={setShowDeleteCommentModal}
       />
     </Fragment>
   );

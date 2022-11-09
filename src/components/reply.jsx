@@ -65,9 +65,8 @@ const Reply = ({
             isReplyDisabled={isReplyDisabled}
             onReplyClick={handleReply}
             onEditClick={handleEditClick}
-            onDeleteClick={(id) => {
+            onDeleteClick={() => {
               setShowDeleteCommentModal(true);
-              // onDeleteClick(id);
             }}
           />
           <CommentBody
@@ -89,7 +88,12 @@ const Reply = ({
         replyToCommentInput={replyToCommentInput}
         onReplyToCommentInput={onReplyToCommentInput}
       />
-      <DeleteCommentModal show={showDeleteCommentModal} />
+      <DeleteCommentModal
+        show={showDeleteCommentModal}
+        comment={reply}
+        onDeleteClick={onDeleteClick}
+        onCancelClick={setShowDeleteCommentModal}
+      />
     </div>
   );
 };
