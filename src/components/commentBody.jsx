@@ -23,7 +23,7 @@ const CommentBody = ({ editable, comment, onEditClick, onUpdateClick }) => {
         {editable && (
           <div className="flex w-full justify-end mr-3 mt-2  mb-2 text-sm md:m-0 md:w-11/12 md:-mt-3">
             <button
-              className="grow-0 px-4 py-2 text-white font-semibold rounded-lg border bg-moderateBlue md:self-end md:-mt-6 md:mr-9 sm:mr-0 md:px-4 md:py-1"
+              className="grow-0 px-4 py-2 text-white font-semibold rounded-lg border bg-moderateBlue md:self-end md:-mt-6 md:mr-9 sm:mr-0 md:px-4 md:py-1 hover:bg-lightGrayishBlue"
               onClick={() => onUpdateClick(comment.id, input)}
             >
               UPDATE

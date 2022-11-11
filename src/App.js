@@ -128,7 +128,7 @@ const App = () => {
 
   return (
     <div>
-      <main className="bg-gray-100 p-8">
+      <main className="p-8">
         <section className="mt-4">
           {comments.map((comment) => {
             return (
@@ -145,7 +145,7 @@ const App = () => {
                   replyToCommentInput={replyToCommentInput}
                   onReplyToCommentInput={setReplyToCommentInput}
                 />
-                <section className="mt-4 mx-auto border-l border-gray-300 h-full max-w-lg">
+                <section className="mt-4 mx-auto border-l-2 border-gray-200 h-full reply-width">
                   {comment.replies.map((reply) => {
                     return (
                       <Reply

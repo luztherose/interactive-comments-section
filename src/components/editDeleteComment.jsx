@@ -14,11 +14,11 @@ const EditDeleteComment = ({
   return (
     <div className="w-2/5">
       <button
-        className="w-3/5 text-sm text-softRed font-semibold md:self-end md:-mt-6"
+        className="w-3/5 text-sm text-softRed font-semibold md:self-end md:-mt-6 hover:text-paleRed"
         onClick={() => onDeleteClick(comment.id)}
       >
         <span className="inline-block mr-1">
-          <img className="" src={iconDelete} alt="user profile's avatar" />
+          <img src={iconDelete} alt="user profile's avatar" />
         </span>
         Delete
       </button>
@@ -28,7 +28,7 @@ const EditDeleteComment = ({
         disabled={isEditMode}
       >
         <span className="inline-block mr-1">
-          <img className="" src={iconEdit} alt="user profile's avatar" />
+          <img src={iconEdit} alt="user profile's avatar" />
         </span>
         Edit
       </button>

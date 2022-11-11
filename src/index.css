@@ -2,7 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Body */
+body {
+  background: hsl(228, 33%, 97%);
+}
+.reply-width {
+  max-width: 38rem;
+}
 /* Footer */
 .attribution a { 
   color: hsl(228, 45%, 44%); 
 }
+

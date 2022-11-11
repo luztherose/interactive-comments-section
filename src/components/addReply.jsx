@@ -39,7 +39,7 @@ const AddReply = ({
           ></textarea>
         </div>
         <button
-          className="grow-0 px-6 py-2 text-sm text-white font-semibold rounded-lg border bg-moderateBlue md:self-end md:-mt-9 md:mr-12 sm:mr-0"
+          className="grow-0 px-6 py-2 text-sm text-white font-semibold rounded-lg border bg-moderateBlue md:self-end md:-mt-9 md:mr-12 sm:mr-0  hover:bg-lightGrayishBlue"
           onClick={() => onReplyComment(comment, reply)}
         >
           Reply

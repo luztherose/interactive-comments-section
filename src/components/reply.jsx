@@ -50,8 +50,8 @@ const Reply = ({
   };
 
   return (
-    <div className="mt-4 ml-6 w-full mb-4 ">
-      <div className="px-4 py-6 w-full mx-auto bg-white flex gap-1 items-center rounded-lg md:flex-col sm:p-4">
+    <div className="mt-4 ml-8 w-full mb-4 ">
+      <div className="px-4 py-6 w-full mx-auto bg-white flex gap-3 items-center rounded-lg md:flex-col sm:p-4">
         <Counter
           value={value}
           onIncrement={handleIncrement}
