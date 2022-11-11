@@ -9,7 +9,7 @@ const Counter = (props) => {
       <button onClick={onIncrement} className="p-2">
         <img className="" src={iconPlus} alt="user profile's avatar" />
       </button>
-      <p className="mt-2 md:mt-0 text-moderateBlue px-2">{value}</p>
+      <p className="mt-2 md:mt-0 text-moderateBlue text-center">{value}</p>
       <button onClick={onDecrement} className="p-2">
         <img className="" src={iconMinus} alt="user profile's avatar" />
       </button>

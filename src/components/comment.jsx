@@ -52,7 +52,7 @@ const Comment = ({
 
   return (
     <Fragment>
-      <div className="px-5 py-8 max-w-xl mx-auto bg-white flex flex-wrap gap-1 items-start rounded-lg md:flex-col sm:p-4">
+      <div className="px-5 py-8 max-w-2xl mx-auto bg-white flex flex-wrap gap-3 items-start rounded-lg md:flex-col sm:p-4">
         <Counter
           value={value}
           onIncrement={handleIncrement}
