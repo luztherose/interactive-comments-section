@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 const Footer = () => {
   return (
     <>
-      <div className="attribution flex justify-center pb-8">
+      <div className="attribution flex justify-center pb-8 md:flex-col md:items-center">
         <p className="mr-2">
           Challenge by{" "}
           <a

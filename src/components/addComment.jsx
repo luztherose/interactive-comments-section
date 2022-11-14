@@ -10,7 +10,7 @@ const AddComment = ({ onSendClick, isCommentAdded, currentUser }) => {
 
   return (
     <section className="mt-4">
-      <div className="p-5 max-w-2xl mx-auto bg-white flex items-start rounded-lg md:flex-col md:max-w-md sm:max-w-xl">
+      <div className="p-5 max-w-2xl mx-auto bg-white flex items-start rounded-lg md:flex-col">
         <img
           className="grow-0 block mx-auto h-8 rounded-full sm:mx-0 sm:shrink-0 md:ml-14 md:mt-3"
           src={getImageURL(currentUser.image.png)}
@@ -25,7 +25,7 @@ const AddComment = ({ onSendClick, isCommentAdded, currentUser }) => {
           ></textarea>
         </div>
         <button
-          className="grow-0 px-6 py-2 text-sm text-white font-semibold rounded-lg border bg-moderateBlue md:self-end md:-mt-9 md:mr-12 sm:mr-0 hover:bg-lightGrayishBlue"
+          className="grow-0 px-6 py-2 text-sm text-white font-semibold rounded-lg border bg-moderateBlue md:self-end md:-mt-9 md:mr-16 sm:mr-0 hover:bg-lightGrayishBlue"
           onClick={() => onSendClick(userInput)}
         >
           SEND

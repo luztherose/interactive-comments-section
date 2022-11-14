@@ -50,14 +50,14 @@ const Reply = ({
   };
 
   return (
-    <div className="mt-4 ml-8 w-full mb-4 ">
-      <div className="px-4 py-6 w-full mx-auto bg-white flex gap-3 items-center rounded-lg md:flex-col sm:p-4">
+    <div className="mt-4 ml-8 w-full mb-4 md:ml-4">
+      <div className="px-4 py-6  mx-auto bg-white flex gap-3 items-center rounded-lg md:flex-col sm:p-4">
         <Counter
           value={value}
           onIncrement={handleIncrement}
           onDecrement={handleDecrement}
         />
-        <div className="w-11/12 md:-order-1">
+        <div className="w-11/12 md:-order-1 md:relative">
           <CommentHeader
             comment={reply}
             isLoggedUser={isLoggedUser}
