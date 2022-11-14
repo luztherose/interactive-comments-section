@@ -5,7 +5,7 @@ import iconMinus from "../images/icon-minus.svg";
 const Counter = (props) => {
   const { value, onIncrement, onDecrement } = props;
   return (
-    <div className="flex-col bg-lightGray self-center px-1 py-1 rounded-lg md:self-center md:flex md:flex-row md:justify-around md:w-1/5 md:px-2 md:py-1 md:mt-2 md:ml-6 sm:w-2/5 sm:ml-1">
+    <div className="flex-col bg-lightGray self-center px-1 py-1 rounded-lg md:self-start md:flex md:flex-row md:justify-around md:w-1/5 md:px-2 md:py-1 md:mt-2 md:ml-4 sm:w-2/5 sm:ml-1">
       <button onClick={onIncrement} className="p-2">
         <img className="" src={iconPlus} alt="user profile's avatar" />
       </button>

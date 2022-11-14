@@ -58,7 +58,7 @@ const Comment = ({
           onIncrement={handleIncrement}
           onDecrement={handleDecrement}
         />
-        <div className="w-11/12 md:-order-1">
+        <div className="w-11/12 md:-order-1 md:relative">
           <CommentHeader
             comment={comment}
             isLoggedUser={isLoggedUser}
