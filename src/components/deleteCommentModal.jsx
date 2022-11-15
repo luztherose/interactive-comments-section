@@ -17,7 +17,7 @@ const DeleteCommentModal = ({
 }) => {
   return (
     <div className={getDeleteCommentClasses(show)}>
-      <div className="max-w-sm bg-white rounded-lg px-6 py-6 ring-1 ring-slate-900/5 shadow-xl">
+      <div className="max-w-sm bg-white rounded-lg px-6 py-6 ring-1 ring-slate-900/5 shadow-xl sm:w-4/5 sm:px-4 sm:py-3 ">
         <h3 className="text-darkBlue text-xl font-medium tracking-tight">
           Delete comment
         </h3>
@@ -27,13 +27,13 @@ const DeleteCommentModal = ({
         </p>
         <div className="mt-4 flex justify-center gap-4">
           <button
-            className="px-8 py-3 text-sm text-white font-semibold rounded-lg bg-darkBlue"
+            className="px-8 py-3 text-sm text-white font-semibold rounded-lg bg-darkBlue sm:px-4 sm:py-3"
             onClick={() => onCancelClick(false)}
           >
             NO, CANCEL
           </button>
           <button
-            className="px-8 py-3 text-sm text-white font-semibold rounded-lg bg-softRed"
+            className="px-8 py-3 text-sm text-white font-semibold rounded-lg bg-softRed sm:px-4 sm:py-3"
             onClick={() => onDeleteClick(comment.id)}
           >
             YES, DELETE

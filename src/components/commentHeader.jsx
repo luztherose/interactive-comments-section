@@ -6,6 +6,7 @@ const CommentHeader = ({
   comment,
   onReplyClick,
   isLoggedUser,
+  isEditMode,
   isCommentUpdated,
   onEditClick,
   onDeleteClick,
@@ -36,6 +37,7 @@ const CommentHeader = ({
       <CommentPrimaryActionButtons
         comment={comment}
         isLoggedUser={isLoggedUser}
+        isEditMode={isEditMode}
         isCommentUpdated={isCommentUpdated}
         isReplyAdded={isReplyAdded}
         onReplyClick={onReplyClick}

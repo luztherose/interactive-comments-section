@@ -17,11 +17,10 @@ const Reply = ({
   onReplyToCommentInput,
 }) => {
   const [isReplyDisabled, setIsReplyDisabled] = useState(false);
-  const [isCommentUpdated, setIsCommentUpdated] = useState(false);
   const [isReplyAdded, setIsReplyAdded] = useState(false);
   const [showReplyComponent, setShowReplyComponent] = useState(false);
   const [showDeleteCommentModal, setShowDeleteCommentModal] = useState(false);
-  const [showEditMode, setShowEditMode] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
   let [value, setValue] = useState(reply.score);
 
   const handleReply = () => {
@@ -30,13 +29,12 @@ const Reply = ({
     setIsReplyDisabled(true);
   };
   const handleEditClick = () => {
-    setShowEditMode(true);
+    setIsEditMode(true);
   };
 
   const handleUpdateClick = (replyID, newContent) => {
     onUpdateClick(replyID, newContent);
-    setShowEditMode(false);
-    setIsCommentUpdated(true);
+    setIsEditMode(false);
   };
 
   const handleIncrement = () => {
@@ -50,7 +48,7 @@ const Reply = ({
   };
 
   return (
-    <div className="mt-4 ml-8 w-full mb-4 md:ml-4">
+    <div className="mt-4 ml-8 w-full mb-4 md:ml-4 md:w-fit">
       <div className="px-4 py-6  mx-auto bg-white flex gap-3 items-center rounded-lg md:flex-col sm:p-4">
         <Counter
           value={value}
@@ -61,7 +59,7 @@ const Reply = ({
           <CommentHeader
             comment={reply}
             isLoggedUser={isLoggedUser}
-            isCommentUpdated={isCommentUpdated}
+            isEditMode={isEditMode}
             isReplyAdded={isReplyAdded}
             isReplyDisabled={isReplyDisabled}
             onReplyClick={handleReply}
@@ -71,7 +69,7 @@ const Reply = ({
             }}
           />
           <CommentBody
-            editable={showEditMode}
+            editable={isEditMode}
             comment={reply}
             onUpdateClick={handleUpdateClick}
           />

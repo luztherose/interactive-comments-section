@@ -24,7 +24,7 @@ const AddReply = ({
 
   return (
     <section className={getAddReplyCommentClasses(show)}>
-      <div className="p-5 max-w-lg mx-auto bg-white flex items-start rounded-lg md:flex-col md:max-w-md sm:max-w-xl">
+      <div className="max-w-2xl p-5 mx-auto bg-white flex items-start rounded-lg md:flex-col">
         <img
           className="grow-0 block mx-auto h-8 rounded-full sm:mx-0 sm:shrink-0 md:ml-14 md:mt-3"
           src={getImageURL(currentUser.image.png)}
