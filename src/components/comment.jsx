@@ -16,9 +16,8 @@ const Comment = ({
   onReplyToCommentInput,
 }) => {
   const [showReplyComponent, setShowReplyComponent] = useState(false);
-  const [showEditMode, setShowEditMode] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
   const [showDeleteCommentModal, setShowDeleteCommentModal] = useState(false);
-  const [isCommentUpdated, setIsCommentUpdated] = useState(false);
   const [isReplyAdded, setIsReplyAdded] = useState(false);
   const [isReplyDisabled, setIsReplyDisabled] = useState(false);
 
@@ -31,13 +30,13 @@ const Comment = ({
   };
 
   const handleEditClick = () => {
-    setShowEditMode(true);
+    setIsEditMode(true);
   };
 
   const handleUpdateClick = (commentID, newContent) => {
     onUpdateClick(commentID, newContent);
-    setShowEditMode(false);
-    setIsCommentUpdated(true);
+    setIsEditMode(false);
+    setIsEditMode(true);
   };
 
   const handleIncrement = () => {
@@ -62,7 +61,7 @@ const Comment = ({
           <CommentHeader
             comment={comment}
             isLoggedUser={isLoggedUser}
-            isCommentUpdated={isCommentUpdated}
+            isEditMode={isEditMode}
             onReplyClick={handleReply}
             onEditClick={handleEditClick}
             onDeleteClick={() => {
@@ -72,7 +71,7 @@ const Comment = ({
             isReplyDisabled={isReplyDisabled}
           />
           <CommentBody
-            editable={showEditMode}
+            editable={isEditMode}
             comment={comment}
             onEditClick={handleEditClick}
             onUpdateClick={handleUpdateClick}

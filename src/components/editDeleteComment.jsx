@@ -4,16 +4,13 @@ import iconEdit from "../images/icon-edit.svg";
 
 const EditDeleteComment = ({
   comment,
+  isEditMode,
   onEditClick,
   onDeleteClick,
-  isEditMode,
-  isCommentUpdated,
 }) => {
-  const [isEdit, setIsEdit] = useState(false);
-
-  const getActionButtonsClasses = (isEditMode) => {
+  const getActionButtonsClasses = (isEdit) => {
     let classes = "w-2/5 sm:w-3/5 md:flex md:justify-evenly sm:left-24 ";
-    if (!isEditMode) {
+    if (!isEdit) {
       return (classes += "md:absolute md:left-64 md:-bottom-12");
     }
     return classes;
@@ -32,11 +29,11 @@ const EditDeleteComment = ({
       </button>
       <button
         className={
-          !isEdit || isCommentUpdated
-            ? "text-sm font-semibold moderateBlue hover:text-lightGrayishBlue"
+          !isEditMode
+            ? "text-sm font-semibold text-moderateBlue hover:text-lightGrayishBlue"
             : "text-sm font-semibold text-lightGrayishBlue hover:text-lightGrayishBlue"
         }
-        onClick={() => onEditClick(setIsEdit(true))}
+        onClick={onEditClick}
         disabled={isEditMode}
       >
         <span className="inline-block mr-1">

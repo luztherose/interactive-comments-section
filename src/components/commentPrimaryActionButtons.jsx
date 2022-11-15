@@ -6,7 +6,7 @@ import { getButtonClasses } from "../utils/helpers";
 const CommentPrimaryActionButtons = ({
   comment,
   isLoggedUser,
-  isCommentUpdated,
+  isEditMode,
   onReplyClick,
   onEditClick,
   onDeleteClick,
@@ -16,9 +16,9 @@ const CommentPrimaryActionButtons = ({
     return (
       <EditDeleteComment
         comment={comment}
+        isEditMode={isEditMode}
         onEditClick={onEditClick}
         onDeleteClick={onDeleteClick}
-        isCommentUpdated={isCommentUpdated}
       />
     );
   }
