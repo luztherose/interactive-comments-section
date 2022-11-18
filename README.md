@@ -50,7 +50,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [https://github.com/luztherose/interactive-comments-section](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [https://luztherose.github.io/interactive-comments-section/](https://your-live-site-url.com)
 ### Built with
 
 - Mobile-first workflow
