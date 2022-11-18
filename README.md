@@ -45,12 +45,13 @@ Users should be able to:
 
 ### Screenshot
 
-![My solution for the Interactive comments section coding challenge](./src/design/commentSectionPreview.png)
+![My solution for the Interactive comments section coding challenge](./src/design/solution-deskto-preview.png)
 
 ### Links
 
 - Solution URL: [https://github.com/luztherose/interactive-comments-section](https://your-solution-url.com)
 - Live Site URL: [https://luztherose.github.io/interactive-comments-section/](https://your-live-site-url.com)
+
 ### Built with
 
 - Mobile-first workflow
@@ -60,11 +61,11 @@ Users should be able to:
 - CSS custom properties
 - Flexbox
 - CSS Grid
+
 ## Author
 
 - Website - [Luz De La Rosa](https://luztherose.github.io/portfolio/)
 - Frontend Mentor - [@luztherose](https://www.frontendmentor.io/profile/luztherose)
 - Twitter - [@luztherose](https://twitter.com/luztherose)
-
 
 **Have fun building!** 🚀

@@ -23,7 +23,7 @@ const CommentBody = ({ editable, comment, onEditClick, onUpdateClick }) => {
         {editable && (
           <div className="flex w-full justify-end mr-3 mt-2  mb-2 text-sm md:m-0 md:w-11/12 md:-mt-3 md:relative">
             <button
-              className="grow-0 px-4 py-2 text-white font-semibold rounded-lg border bg-moderateBlue md:self-end md:absolute md:-bottom-14 hover:bg-lightGrayishBlue"
+              className="grow-0 px-4 py-2 text-white font-medium rounded-lg border bg-moderateBlue md:self-end md:absolute md:-bottom-14 hover:bg-lightGrayishBlue"
               onClick={() => onUpdateClick(comment.id, input)}
             >
               UPDATE
@@ -36,7 +36,7 @@ const CommentBody = ({ editable, comment, onEditClick, onUpdateClick }) => {
     return (
       <div className="grow  w-full ml-3 mr-3 text-center md:order-first md:mx-auto sm:w-full">
         <p className="text-sm text-gray-600 text-start w-11/12 md:w-full md:ml-4 sm:ml-0">
-          <span className="font-semibold text-sm text-moderateBlue">
+          <span className="font-medium text-sm text-moderateBlue">
             {replyingTo ? "@" : ""} {replyingTo}
           </span>{" "}
           {content}
