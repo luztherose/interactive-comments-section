@@ -49,8 +49,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [https://github.com/luztherose/interactive-comments-section](https://your-solution-url.com)
-- Live Site URL: [https://luztherose.github.io/interactive-comments-section/](https://your-live-site-url.com)
+- Solution URL: [https://github.com/luztherose/interactive-comments-section]([https://your-solution-url.com](https://github.com/luztherose/interactive-comments-section))
+- Live Site URL: [https://luztherose.github.io/interactive-comments-section/](https://luztherose.github.io/interactive-comments-section/)
 
 ### Built with
 
