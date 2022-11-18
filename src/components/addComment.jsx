@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { getImageURL } from "../utils/helpers";
 
 const AddComment = ({ onSendClick, isCommentAdded, currentUser }) => {
   const [userInput, setUserInput] = useState("");
@@ -13,7 +12,7 @@ const AddComment = ({ onSendClick, isCommentAdded, currentUser }) => {
       <div className="p-5 max-w-2xl mx-auto bg-white flex items-start rounded-lg md:flex-col">
         <img
           className="grow-0 block mx-auto h-8 rounded-full sm:mx-0 sm:shrink-0 md:ml-14 md:mt-3"
-          src={getImageURL(currentUser.image.png)}
+          src={currentUser.image.png}
           alt="user profile's avatar"
         />
         <div className="grow ml-3 mr-3 text-center md:order-first md:mx-auto sm:w-full md:w-4/5">

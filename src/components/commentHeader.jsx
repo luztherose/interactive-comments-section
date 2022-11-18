@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { getImageURL } from "../utils/helpers";
 import CommentPrimaryActionButtons from "./commentPrimaryActionButtons";
 
 const CommentHeader = ({
@@ -22,7 +21,7 @@ const CommentHeader = ({
         <div className="flex justify-start gap-3 mb-5">
           <img
             className="grow-0 h-8 rounded-full sm:ml-0"
-            src={getImageURL(image.png)}
+            src={image.png}
             alt="user profile's avatar"
           />
           <p className="font-semibold text-sm self-center">{username}</p>
