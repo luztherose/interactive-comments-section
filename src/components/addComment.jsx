@@ -17,14 +17,14 @@ const AddComment = ({ onSendClick, isCommentAdded, currentUser }) => {
         />
         <div className="grow ml-3 mr-3 text-center md:order-first md:mx-auto sm:w-full md:w-4/5">
           <textarea
-            className="border border-moderateBlue -200 pt-1 pl-3 w-full h-16 resize-none rounded text-sm"
+            className="border border-lightGray pt-1 pl-3 w-full h-16 resize-none rounded text-sm"
             placeholder="Add a comment..."
             value={isCommentAdded ? "" : userInput}
             onChange={handleInputOnChange}
           ></textarea>
         </div>
         <button
-          className="grow-0 px-6 py-2 text-sm text-white font-semibold rounded-lg border bg-moderateBlue md:self-end md:-mt-9 md:mr-16 sm:mr-0 hover:bg-lightGrayishBlue"
+          className="grow-0 px-6 py-2 text-sm text-white font-medium rounded-lg border bg-moderateBlue md:self-end md:-mt-9 md:mr-16 sm:mr-0 hover:bg-lightGrayishBlue"
           onClick={() => onSendClick(userInput)}
         >
           SEND

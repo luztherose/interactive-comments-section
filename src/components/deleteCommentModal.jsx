@@ -27,13 +27,13 @@ const DeleteCommentModal = ({
         </p>
         <div className="mt-4 flex justify-center gap-4">
           <button
-            className="px-8 py-3 text-sm text-white font-semibold rounded-lg bg-darkBlue sm:px-4 sm:py-3"
+            className="px-8 py-3 text-sm text-white font-medium rounded-lg bg-darkBlue sm:px-4 sm:py-3"
             onClick={() => onCancelClick(false)}
           >
             NO, CANCEL
           </button>
           <button
-            className="px-8 py-3 text-sm text-white font-semibold rounded-lg bg-softRed sm:px-4 sm:py-3"
+            className="px-8 py-3 text-sm text-white font-medium rounded-lg bg-softRed sm:px-4 sm:py-3"
             onClick={() => onDeleteClick(comment.id)}
           >
             YES, DELETE

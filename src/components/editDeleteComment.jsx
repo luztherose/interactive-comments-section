@@ -19,7 +19,7 @@ const EditDeleteComment = ({
   return (
     <div className={getActionButtonsClasses(isEditMode)}>
       <button
-        className="w-3/5 text-sm text-softRed font-semibold md:self-end md:-mt-6 hover:text-paleRed  sm:left-16"
+        className="w-3/5 text-sm text-softRed font-medium md:self-end md:-mt-6 hover:text-paleRed  sm:left-16"
         onClick={() => onDeleteClick(comment.id)}
       >
         <span className="inline-block mr-1">
@@ -30,8 +30,8 @@ const EditDeleteComment = ({
       <button
         className={
           !isEditMode
-            ? "text-sm font-semibold text-moderateBlue hover:text-lightGrayishBlue"
-            : "text-sm font-semibold text-lightGrayishBlue hover:text-lightGrayishBlue"
+            ? "text-sm font-medium text-moderateBlue hover:text-lightGrayishBlue"
+            : "text-sm font-medium text-lightGrayishBlue hover:text-lightGrayishBlue"
         }
         onClick={onEditClick}
         disabled={isEditMode}
