@@ -93,9 +93,7 @@ const App = () => {
       if (reply) {
         return reply.user.username;
       } else {
-        {
-          return comment.user.username;
-        }
+        return comment.user.username;
       }
     };
     const newReply = {

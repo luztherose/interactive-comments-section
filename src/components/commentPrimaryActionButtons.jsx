@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import EditDeleteComment from "./editDeleteComment";
 import iconReply from "../images/icon-reply.svg";
 import { getButtonClasses } from "../utils/helpers";
