@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import CommentPrimaryActionButtons from "./commentPrimaryActionButtons";
 
 const CommentHeader = ({
@@ -24,7 +24,9 @@ const CommentHeader = ({
             src={image.png}
             alt="user profile's avatar"
           />
-          <p className="font-bold text-grayishBlue text-sm self-center">{username}</p>
+          <p className="font-bold text-grayishBlue text-sm self-center">
+            {username}
+          </p>
           {isLoggedUser && (
             <p className="text-sm text-white bg-moderateBlue px-2 m-0 self-center">
               You

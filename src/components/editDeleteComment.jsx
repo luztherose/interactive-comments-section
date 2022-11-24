@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import iconDelete from "../images/icon-delete.svg";
 import iconEdit from "../images/icon-edit.svg";
 
