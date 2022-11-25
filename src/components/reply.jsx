@@ -10,6 +10,7 @@ const Reply = ({
   comment,
   reply,
   isLoggedUser,
+  onCommentUpdated,
   onUpdateClick,
   onDeleteClick,
   onReplyComment,
@@ -21,7 +22,6 @@ const Reply = ({
   const [showReplyComponent, setShowReplyComponent] = useState(false);
   const [showDeleteCommentModal, setShowDeleteCommentModal] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
-  let [value, setValue] = useState(reply.score);
 
   const handleReply = () => {
     setShowReplyComponent(true);
@@ -38,20 +38,34 @@ const Reply = ({
   };
 
   const handleIncrement = () => {
-    setValue(value++);
+    const updatedReply = { ...reply, score: [++reply.score] };
+    const updatedReplies = comment.replies.map((reply) => {
+      if (reply.id === updatedReply.id) {
+        return updatedReply;
+      } else {
+        return reply;
+      }
+    });
+    onCommentUpdated({ ...comment, replies: updatedReplies });
   };
 
   const handleDecrement = () => {
-    if (value !== 0) {
-      setValue(value--);
-    }
+    const updatedReply = { ...reply, score: [--reply.score] };
+    const updatedReplies = comment.replies.map((reply) => {
+      if (reply.id === updatedReply.id) {
+        return updatedReply;
+      } else {
+        return reply;
+      }
+    });
+    onCommentUpdated({ ...comment, replies: updatedReplies });
   };
 
   return (
     <div className="mt-4 ml-8 w-full mb-4 md:ml-4 md:w-fit">
       <div className="px-4 py-6  mx-auto bg-white flex gap-3 items-center rounded-lg md:flex-col sm:p-4">
         <Counter
-          value={value}
+          value={reply.score}
           onIncrement={handleIncrement}
           onDecrement={handleDecrement}
         />
