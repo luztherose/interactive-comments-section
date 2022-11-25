@@ -4,7 +4,6 @@ const CommentBody = ({ editable, comment, onEditClick, onUpdateClick }) => {
   const { content, replyingTo } = comment;
   const [input, setInput] = useState(content);
 
-  console.log(input)
   const handleInputChange = (event) => {
     setInput(event.target.value);
   };

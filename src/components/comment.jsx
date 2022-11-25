@@ -9,6 +9,7 @@ const Comment = ({
   currentUser,
   comment,
   isLoggedUser,
+  onCommentUpdated,
   onUpdateClick,
   onDeleteClick,
   onReplyComment,
@@ -20,8 +21,6 @@ const Comment = ({
   const [showDeleteCommentModal, setShowDeleteCommentModal] = useState(false);
   const [isReplyAdded, setIsReplyAdded] = useState(false);
   const [isReplyDisabled, setIsReplyDisabled] = useState(false);
-
-  let [value, setValue] = useState(comment.score);
 
   const handleReply = () => {
     setShowReplyComponent(true);
@@ -40,20 +39,18 @@ const Comment = ({
   };
 
   const handleIncrement = () => {
-    setValue(value++);
+    onCommentUpdated({ ...comment, score: [++comment.score] });
   };
 
   const handleDecrement = () => {
-    if (value !== 0) {
-      setValue(value--);
-    }
+    onCommentUpdated({ ...comment, score: [--comment.score] });
   };
 
   return (
     <Fragment>
       <div className="px-5 py-8 max-w-2xl mx-auto bg-white flex flex-wrap gap-3 items-start rounded-lg md:flex-col sm:p-4">
         <Counter
-          value={value}
+          value={comment.score}
           onIncrement={handleIncrement}
           onDecrement={handleDecrement}
         />

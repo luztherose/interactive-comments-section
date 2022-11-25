@@ -33,6 +33,17 @@ const App = () => {
     setComments(updatedComments);
   };
 
+  const handleCommentUpdated = (updatedComment) => {
+    const updaptedComments = comments.map((comment) => {
+      if (comment.id === updatedComment.id) {
+        return updatedComment;
+      } else {
+        return comment;
+      }
+    });
+    setComments(updaptedComments);
+  };
+
   const handleReplyDataOnUpdateClick = (replyID, newContent) => {
     const updatedReplies = comments.map((comment) => {
       const getUpdatedReply = (comment) => {
@@ -137,6 +148,7 @@ const App = () => {
                   key={comment.id}
                   id={comment.id}
                   isLoggedUser={comment.user.username === currentUser.username}
+                  onCommentUpdated={handleCommentUpdated}
                   onUpdateClick={handleDataOnUpdateClick}
                   onDeleteClick={handleDeleteComment}
                   onReplyComment={handleCreateReply}
@@ -155,6 +167,7 @@ const App = () => {
                         isLoggedUser={
                           reply.user.username === currentUser.username
                         }
+                        onCommentUpdated={handleCommentUpdated}
                         onUpdateClick={handleReplyDataOnUpdateClick}
                         onDeleteClick={handleDeleteReply}
                         onReplyComment={handleCreateReply}
