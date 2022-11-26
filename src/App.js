@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { updateComment } from "./utils/commentsHelpers";
 import Footer from "./components/footer.jsx";
 import AddComment from "./components/addComment.jsx";
 import Comment from "./components/comment.jsx";
@@ -22,26 +23,8 @@ const App = () => {
     localStorage.setItem("comments", JSON.stringify(comments));
   }, [currentUser, comments]);
 
-  const handleDataOnUpdateClick = (commentID, newContent) => {
-    const updatedComments = comments.map((comment) => {
-      if (comment.id === commentID) {
-        return { ...comment, content: newContent };
-      } else {
-        return comment;
-      }
-    });
-    setComments(updatedComments);
-  };
-
   const handleCommentUpdated = (updatedComment) => {
-    const updaptedComments = comments.map((comment) => {
-      if (comment.id === updatedComment.id) {
-        return updatedComment;
-      } else {
-        return comment;
-      }
-    });
-    setComments(updaptedComments);
+    setComments(updateComment(comments, updatedComment));
   };
 
   const handleReplyDataOnUpdateClick = (replyID, newContent) => {
@@ -149,7 +132,6 @@ const App = () => {
                   id={comment.id}
                   isLoggedUser={comment.user.username === currentUser.username}
                   onCommentUpdated={handleCommentUpdated}
-                  onUpdateClick={handleDataOnUpdateClick}
                   onDeleteClick={handleDeleteComment}
                   onReplyComment={handleCreateReply}
                   replyToCommentInput={replyToCommentInput}

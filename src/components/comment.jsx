@@ -10,7 +10,6 @@ const Comment = ({
   comment,
   isLoggedUser,
   onCommentUpdated,
-  onUpdateClick,
   onDeleteClick,
   onReplyComment,
   replyToCommentInput,
@@ -32,10 +31,9 @@ const Comment = ({
     setIsEditMode(true);
   };
 
-  const handleUpdateClick = (commentID, newContent) => {
-    onUpdateClick(commentID, newContent);
+  const handleOnCommentUpdated = (comment) => {
+    onCommentUpdated(comment);
     setIsEditMode(false);
-    setIsEditMode(true);
   };
 
   const handleIncrement = () => {
@@ -71,7 +69,7 @@ const Comment = ({
             editable={isEditMode}
             comment={comment}
             onEditClick={handleEditClick}
-            onUpdateClick={handleUpdateClick}
+            onCommentUpdated={handleOnCommentUpdated}
           />
         </div>
       </div>
