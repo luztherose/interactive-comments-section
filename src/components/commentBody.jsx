@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 
-const CommentBody = ({ editable, comment, onEditClick, onUpdateClick }) => {
+const CommentBody = ({ editable, comment, onCommentUpdated }) => {
   const { content, replyingTo } = comment;
   const [input, setInput] = useState(content);
 
   const handleInputChange = (event) => {
     setInput(event.target.value);
+  };
+
+  const handleOnContentUpdate = (content) => {
+    onCommentUpdated({ ...comment, content });
   };
 
   if (editable) {
@@ -23,7 +27,7 @@ const CommentBody = ({ editable, comment, onEditClick, onUpdateClick }) => {
           <div className="flex w-full justify-end mr-3 mt-2  mb-2 text-sm md:m-0 md:w-11/12 md:-mt-3 md:relative">
             <button
               className="grow-0 px-4 py-2 text-white font-medium rounded-lg border bg-moderateBlue md:self-end md:absolute md:-bottom-14 hover:bg-lightGrayishBlue"
-              onClick={() => onUpdateClick(comment.id, input)}
+              onClick={() => handleOnContentUpdate(input)}
             >
               UPDATE
             </button>
