@@ -8,3 +8,16 @@ export const updateComment = (comments, updatedComment) => {
   });
   return updaptedComments;
 };
+
+export const updateReply = (comment, updatedReply) => {
+  const getUpdatedReply = (comment) => {
+    return comment.replies.map((reply) => {
+      if (reply.id === updatedReply.id) {
+        return updatedReply;
+      } else {
+        return reply;
+      }
+    });
+  };
+  return { ...comment, replies: getUpdatedReply(comment) };
+};

@@ -31,8 +31,8 @@ const Comment = ({
     setIsEditMode(true);
   };
 
-  const handleOnCommentUpdated = (comment) => {
-    onCommentUpdated(comment);
+  const handleOnCommentUpdated = (content) => {
+    onCommentUpdated({ ...comment, content });
     setIsEditMode(false);
   };
 
@@ -67,9 +67,8 @@ const Comment = ({
           />
           <CommentBody
             editable={isEditMode}
-            comment={comment}
-            onEditClick={handleEditClick}
-            onCommentUpdated={handleOnCommentUpdated}
+            content={comment.content}
+            onContentUpdated={handleOnCommentUpdated}
           />
         </div>
       </div>
