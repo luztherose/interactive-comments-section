@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { updateComment } from "./utils/commentsHelpers";
+import { updateComment, updateReply } from "./utils/commentsHelpers";
 import Footer from "./components/footer.jsx";
 import AddComment from "./components/addComment.jsx";
 import Comment from "./components/comment.jsx";
@@ -27,21 +27,9 @@ const App = () => {
     setComments(updateComment(comments, updatedComment));
   };
 
-  const handleReplyDataOnUpdateClick = (replyID, newContent) => {
-    const updatedReplies = comments.map((comment) => {
-      const getUpdatedReply = (comment) => {
-        return comment.replies.map((reply) => {
-          const replies = { ...reply, content: newContent };
-          if (reply.id === replyID) {
-            return { ...replies };
-          } else {
-            return reply;
-          }
-        });
-      };
-      return { ...comment, replies: getUpdatedReply(comment) };
-    });
-    setComments(updatedReplies);
+  const handleReplyUpdated = (comment, updatedReply) => {
+    const updatedComment = updateReply(comment, updatedReply);
+    setComments(updateComment(comments, updatedComment));
   };
 
   const handleDeleteComment = (commentID) => {
@@ -150,7 +138,7 @@ const App = () => {
                           reply.user.username === currentUser.username
                         }
                         onCommentUpdated={handleCommentUpdated}
-                        onUpdateClick={handleReplyDataOnUpdateClick}
+                        onReplyUpdated={handleReplyUpdated}
                         onDeleteClick={handleDeleteReply}
                         onReplyComment={handleCreateReply}
                         replyToCommentInput={replyToCommentInput}

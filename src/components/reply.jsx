@@ -11,7 +11,7 @@ const Reply = ({
   reply,
   isLoggedUser,
   onCommentUpdated,
-  onUpdateClick,
+  onReplyUpdated,
   onDeleteClick,
   onReplyComment,
   replyToCommentInput,
@@ -32,8 +32,8 @@ const Reply = ({
     setIsEditMode(true);
   };
 
-  const handleUpdateClick = (replyID, newContent) => {
-    onUpdateClick(replyID, newContent);
+  const handleOnReplyUpdated = (content) => {
+    onReplyUpdated(comment, { ...reply, content });
     setIsEditMode(false);
   };
 
@@ -84,8 +84,9 @@ const Reply = ({
           />
           <CommentBody
             editable={isEditMode}
-            comment={reply}
-            onUpdateClick={handleUpdateClick}
+            content={reply.content}
+            replyingTo={reply.replyingTo}
+            onContentUpdated={handleOnReplyUpdated}
           />
         </div>
       </div>
