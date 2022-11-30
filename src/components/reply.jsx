@@ -106,7 +106,9 @@ const Reply = ({
       <DeleteCommentModal
         show={showDeleteCommentModal}
         comment={reply}
-        onDeleteClick={onDeleteClick}
+        onDeleteClick={() => {
+          onDeleteClick(comment, reply.id);
+        }}
         onCancelClick={setShowDeleteCommentModal}
       />
     </div>
