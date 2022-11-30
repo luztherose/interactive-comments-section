@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
-import { updateComment, updateReply } from "./utils/commentsHelpers";
+import {
+  updateComment,
+  updateReply,
+  deleteReplyFromComments,
+} from "./utils/commentsHelpers";
 import Footer from "./components/footer.jsx";
 import AddComment from "./components/addComment.jsx";
 import Comment from "./components/comment.jsx";
@@ -33,19 +37,16 @@ const App = () => {
   };
 
   const handleDeleteComment = (commentID) => {
-    const newData = comments.filter((comment) => comment.id !== commentID);
-    setComments(newData);
+    const updatedComments = comments.filter(
+      (comment) => comment.id !== commentID
+    );
+    setComments(updatedComments);
   };
 
-  const handleDeleteReply = (replyID) => {
-    const deleteReply = (comment) => {
-      return comment.replies.filter((reply) => reply.id !== replyID);
-    };
-    const newData = comments.map((comment) => {
-      return { ...comment, replies: deleteReply(comment) };
-    });
-
-    setComments(newData);
+  const handleDeleteReply = (comment, replyID) => {
+    const updatedComment = deleteReplyFromComments(comment, replyID);
+    const updatedComments = updateComment(comments, updatedComment);
+    setComments(updatedComments);
   };
 
   const handleCreateComment = (input) => {

@@ -21,3 +21,11 @@ export const updateReply = (comment, updatedReply) => {
   };
   return { ...comment, replies: getUpdatedReply(comment) };
 };
+
+export const deleteReplyFromComments = (comment, replyID) => {
+  const updatedReplies = (comment) => {
+    return comment.replies.filter((reply) => reply.id !== replyID);
+  };
+
+  return { ...comment, replies: updatedReplies(comment) };
+};
